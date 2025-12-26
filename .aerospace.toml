@@ -1,12 +1,4 @@
 # -----------------------
-# Startup
-# -----------------------
-after-startup-command = [
-  'exec-and-forget /opt/homebrew/bin/borders --listen active_color=0xff88c0d0 inactive_color=0xff4c566a width=10.0'
-]
-start-at-login = false
-
-# -----------------------
 # Layout Normalization
 # -----------------------
 enable-normalization-flatten-containers = true
@@ -42,12 +34,12 @@ preset = "qwerty"
 # Gaps (space for SketchyBar)
 # -----------------------
 [gaps]
-inner.horizontal = 10
-inner.vertical   = 10
-outer.left       = 10
-outer.right      = 10
-outer.bottom     = 10
-outer.top        = 10   # reserve space for your bar
+inner.horizontal = 0
+inner.vertical   = 0
+outer.left       = 0
+outer.right      = 0
+outer.bottom     = 0
+outer.top        = 0   # reserve space for your bar
 
 # -----------------------
 # MAIN MODE KEYBINDINGS
