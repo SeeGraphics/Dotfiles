@@ -1,0 +1,50 @@
+[window]
+opacity = 0.92
+padding = { x = 6, y = 6 }
+decorations = "buttonless"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold   = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+size = 19.0
+
+[font.offset]
+x = 0
+y = 1   # try 0 first
+
+[font.glyph_offset]
+x = 0
+y = -0  # move glyphs slightly up so the top isn't cut
+
+[env]
+TERM = "xterm-256color"
+
+[colors.primary]
+background = "#191724"
+foreground = "#e0def4"
+
+[colors.cursor]
+cursor = "#e0def4"
+text = "#191724"
+
+[colors.normal]
+black   = "#26233a"
+red     = "#eb6f92"
+green   = "#31748f"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#ebbcba"
+white   = "#e0def4"
+
+[colors.bright]
+black   = "#6e6a86"
+red     = "#eb6f92"
+green   = "#31748f"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#ebbcba"
+white   = "#e0def4"
+
