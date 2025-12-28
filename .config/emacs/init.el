@@ -60,6 +60,11 @@
                          ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;; GLSL
+(require 'glsl-mode)
+(add-to-list 'auto-mode-alist '("\\.vs\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.fs\\'" . glsl-mode))
+
 ;; VTERM CONFIG 
 (with-eval-after-load 'vterm
   (define-key vterm-mode-map (kbd "s-v") 'vterm-yank))
@@ -73,6 +78,38 @@
 (setq evil-select-enable-clipboard nil)
 
 ;; UI & Theme
+;; Disable line wrapping (stop code from wrapping when font is large)
+(setq-default truncate-lines t)
+
+;; Also disable it for split windows specifically
+(setq truncate-partial-width-windows t)
+
+;; Prefer Unix line endings and UTF-8 to avoid showing ^M from CRLF files.
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8-unix)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
+(defun matteo/convert-crlf-to-lf ()
+  "Remove CR characters and mark the buffer as Unix line endings."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "\r" nil t)
+      (replace-match "" nil t)))
+  (set-buffer-file-coding-system 'utf-8-unix))
+
+(defun matteo/auto-fix-line-endings ()
+  "Auto-convert CRLF/CR to LF for local text buffers."
+  (when (and buffer-file-name
+             (not (file-remote-p buffer-file-name))
+             (derived-mode-p 'prog-mode 'text-mode 'conf-mode))
+    (save-excursion
+      (goto-char (point-min))
+      (when (search-forward "\r" nil t)
+        (matteo/convert-crlf-to-lf)))))
+
+(add-hook 'find-file-hook #'matteo/auto-fix-line-endings)
+(add-hook 'before-save-hook #'matteo/auto-fix-line-endings)
 ;; Set Iosevka as the default font
 (set-face-attribute 'default nil 
                     :font "Iosevka" 
@@ -85,10 +122,6 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (menu-bar-mode -1))
-
-(load-theme 'gruber-darker t)
-(global-display-line-numbers-mode t)
-(setq display-line-numbers-type 'relative)
 
 ;; Indentation Dots (leading spaces)
 (setq-default indent-tabs-mode nil)
@@ -154,6 +187,10 @@
     (jit-lock-refontify)))
 
 (add-hook 'prog-mode-hook #'matteo/indent-dots-mode)
+
+(load-theme 'gruber-darker t)
+(global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
 
 ;; Formatting
 (unless (package-installed-p 'clang-format)
