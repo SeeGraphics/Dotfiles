@@ -69,6 +69,20 @@
 (with-eval-after-load 'vterm
   (define-key vterm-mode-map (kbd "s-v") 'vterm-yank))
 
+;; PDF viewer
+(use-package pdf-tools
+  :ensure t
+  :hook (pdf-view-mode . (lambda () (display-line-numbers-mode 0)))
+  :config
+  (pdf-tools-install) 
+  (setq-default pdf-view-display-size 'fit-page))
+
+;; Automatically refresh PDF buffers when the file changes on disk
+(add-hook 'pdf-view-mode-hook 'auto-revert-mode)
+
+;; If you use the built-in DocView instead of pdf-tools:
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
 ;; Evil Mode
 (unless (package-installed-p 'evil)
   (package-refresh-contents)
