@@ -1,0 +1,45 @@
+Leader: <Space>
+
+Normal mode:
+<leader>ex  - Netrw explore (:Ex)
+<leader>sv  - vertical split and move right
+<leader>sh  - horizontal split and move down
+J           - join line, keep cursor position
+<C-z>       - half-page down and center
+<C-u>       - half-page up and center
+n           - next search result and center
+N           - previous search result and center
+<leader>y   - yank to system clipboard
+<leader>Y   - yank line to system clipboard
+<leader>d   - delete to void register
+Q           - disabled
+<C-f>       - tmux-sessionizer
+<leader>s   - substitute word under cursor
+<leader>u   - Undotree toggle
+<leader>a   - Harpoon add file
+<C-e>       - Harpoon quick menu
+<C-y>       - Harpoon to file 1
+<C-x>       - Harpoon to file 2
+<C-c>       - Harpoon to file 3
+<C-v>       - Harpoon to file 4
+<leader>cc  - Compile prompt/run
+<leader>gs  - Fugitive :Git
+<leader>pf  - Telescope find files
+<C-p>       - Telescope git files
+<leader>ps  - Telescope grep string prompt
+<leader>rn  - Spectre open with word under cursor
+<leader>sm  - Supermaven toggle
+
+Visual mode:
+J           - move selection down
+K           - move selection up
+<leader>p   - paste without overwriting clipboard
+<leader>y   - yank to system clipboard
+<leader>d   - delete to void register
+Q           - disabled
+<leader>rn  - Spectre open with selection
+
+Insert mode:
+<C-l>       - Supermaven accept suggestion
+<C-j>       - Supermaven accept word
+<C-k>       - Supermaven clear suggestion

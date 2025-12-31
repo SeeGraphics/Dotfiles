@@ -60,6 +60,19 @@
                          ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;; Supermaven (manual install in site-lisp/supermaven)
+(let ((supermaven-dir (expand-file-name "site-lisp/supermaven" user-emacs-directory)))
+  (when (file-directory-p supermaven-dir)
+    (add-to-list 'load-path supermaven-dir)
+    (use-package supermaven
+      :ensure nil
+      :bind (:map supermaven-mode-map
+                  ("C-v" . supermaven-accept-suggestion)
+                  ("C-j" . supermaven-accept-word)
+                  ("C-0" . supermaven-clear-suggestion))
+      :config
+      (global-supermaven-mode 1))))
+
 ;; GLSL
 (require 'glsl-mode)
 (add-to-list 'auto-mode-alist '("\\.vs\\'" . glsl-mode))

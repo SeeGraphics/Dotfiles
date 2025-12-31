@@ -22,7 +22,7 @@ conform.setup({
   format_on_save = function()
     return {
       timeout_ms = 1000,
-      lsp_fallback = true,
+      lsp_fallback = false,
     }
   end,
 })

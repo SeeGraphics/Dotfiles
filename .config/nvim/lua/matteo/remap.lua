@@ -5,9 +5,6 @@ vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- rename
-vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-
 -- splits
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR><C-w>l")
 vim.keymap.set("n", "<leader>sh", ":split<CR><C-w>j")
